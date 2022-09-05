@@ -1,0 +1,107 @@
+﻿@model IEnumerable<LoginForm.Models.User>
+
+@{
+    ViewBag.Title = "ShowData";
+}
+<style>
+    body {
+        width: 100%;
+        background: url(https://th.bing.com/th/id/OIP.qV6iBRTWWPG_QWkvymp4dgHaE8?pid=ImgDet&rs=1);
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
+    }
+.navbar-inverse {
+       display:none;
+    }
+    h4 {
+        display: none;
+    }
+
+
+    hr {
+
+        display: none;
+    }
+    .form-horizontal .control-label {
+        padding-top: 7px;
+        margin-bottom: 0;
+        text-align: right;
+        margin-left: -195px;
+        color: white;
+        font-family: 'Times New Roman';
+        font-size: 20px;
+        padding-left: 0px;
+        margin-top: 0%;
+        letter-spacing: 2px;
+    }
+    h2, .h2 {
+        font-family: 'Times New Roman';
+        font-size: 50px;
+        padding-left: 20px;
+        margin-top: 9%;
+        letter-spacing: 2px;
+        color: #ff6f00;
+    }
+    a {
+        color: #3367b7;
+        text-decoration: none;
+        background: white;
+        padding: 10px;
+    }
+    p {
+        margin: 0 0 10px;
+        color: wheat;
+        margin-top: 31px;
+    }
+    .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+        padding: 8px;
+        line-height: 1.428571;
+        vertical-align: top;
+        border-top: 1px solid #ddd;
+        color: white;
+        font-family: times in roman;
+        font-size: 23px;
+    }
+    tr {
+        color: white;
+        font-family: times in roman;
+        font-size: 23px;
+    }
+   
+</style>
+
+<h2>ShowData</h2>
+
+<table class="table">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PassWord)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassWord)
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    @Html.ActionLink("LogIn", "Index")
+</div>

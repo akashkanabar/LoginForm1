@@ -1,0 +1,108 @@
+﻿@model LoginForm.Models.User
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    body {
+        width: 100%;
+        background: url(https://th.bing.com/th/id/OIP.qV6iBRTWWPG_QWkvymp4dgHaE8?pid=ImgDet&rs=1);
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
+    }
+    .navbar-inverse {
+       display:none;
+    }
+    h4 {
+        display: none;
+    }
+
+
+    hr {
+       
+        display: none;
+    }
+    .form-horizontal .control-label {
+        padding-top: 7px;
+        margin-bottom: 0;
+        text-align: right;
+        margin-left: -195px;
+        color: white;
+        font-family: 'Times New Roman';
+        font-size: 20px;
+        padding-left: 0px;
+        margin-top: 0%;
+        letter-spacing: 2px;
+    }
+    h2, .h2 {
+        font-family: 'Times New Roman';
+        font-size: 50px;
+        padding-left: 20px;
+        margin-top: 9%;
+        letter-spacing: 2px;
+        color: #ff6f00;
+    }
+    a {
+        color: #3367b7;
+        text-decoration: none;
+        background: white;
+        padding: 4px;
+    }
+    p {
+        margin: 0 0 10px;
+        color: wheat;
+        margin-top: 31px;
+    }
+
+</style>
+<h2>LogIn</h2>
+
+@Html.Raw(ViewBag.ErrorMessage)
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>User</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PassWord, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PassWord, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Log In" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<div id="fg">
+    @Html.ActionLink("Forget Password? Click Here", "ForgetPassword")
+
+</div><br>
+
+<div id="r">
+    @Html.ActionLink("Not Register Yet? Click Here", "SignUp")
+</div><br>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
